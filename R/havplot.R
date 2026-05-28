@@ -140,7 +140,7 @@ align_taxonomy_havplot <- function(data, apc) {
       apc_accepted$canonical_name
     )
   
-  species_aligned <- create_taxonomic_update_lookup(species_not_accepted, resources = apc)
+  species_aligned <- APCalign::create_taxonomic_update_lookup(species_not_accepted, resources = apc)
   
   data %>%
     left_join(
