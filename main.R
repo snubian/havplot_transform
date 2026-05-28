@@ -7,7 +7,7 @@ havplot <-
   load_havplot("../../../data/havplot/data") %>%
   correct_havplot()
 
-apc <- load_taxonomic_resources()
+apc <- APCalign::load_taxonomic_resources()
 
 output <-
   havplot %>%
@@ -15,4 +15,4 @@ output <-
   align_taxonomy_havplot(apc) %>%
   arrange_havplot()
 
-saveRDS(havplot, "output/havplot.rds")
+saveRDS(output, "output/havplot.rds")
