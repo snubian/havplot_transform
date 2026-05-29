@@ -1,55 +1,55 @@
-File,Field,Description,Values,dataType,included
-project.csv,projectID,A unique identifier for a specific project. Typically taken as the project name used in the source data.,,character,yes
-project.csv,title,"A descriptive title for the research project. Typically the title used by the source data, and subsequently used as the projectID",,character,no
-project.csv,organizationName,The full name of the organization that is associated with the collection of the data,,character,yes
-project.csv,individualName,"Where relevant, the full name of the person that is associated with the data. Can be the data manager of the organization from which the data were sourced, or the primary researcher who has collected the data.",,character,yes
-project.csv,abstract,Descriptive abstract that summarizes information about the research project.,,character,no
-project.csv,studyAreaDescription,Description of the physical area associated with the research project.,,character,no
-project.csv,designDescription,Breif description of the design of the research project.,,character,no
-project.csv,literatureCitation,Citation for one or more publications describing the research project.,,character,no
-project.csv,projectStartDate,The start date for a project. Starting period for all observation events that occur within the scope of the project. Recorded in ISO 8601 date format: yyyy-mm-dd.,,date,yes
-project.csv,projectStopDate,The stop date for a project. Ending period for all observation events that occur within the scope of the project. Recorded in ISO 8601 date format: yyyy-mm-dd.,,date,no
-project.csv,abundanceMethod,The method used to collect data on the abundance of a species in a plot,,character,yes
-project.csv,HAVPlotDataSource,"Name of organization, or person, who provided the data.",,character,yes
-project.csv,sourceDataLicense,The data license under which the source data were obtained,,character,yes
-plot.csv,plotID,A unique identifier for a surveyed plot (i.e. a location that has been surveyed). Typically constructed as projectID_plotName.,,character,yes
-plot.csv,plotName,"Name or label for a plot, typically as specified by the source data. ",,character,no
-plot.csv,projectID,A unique identifier for a specific project. Typically taken as the project name used in the source data. (from project.csv),,character,no
-plot.csv,decimalLongitude,"The geographic longitude (in decimal degrees, using the spatial reference system given in geodeticDatum) of the geographic center of a Location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive.",,numeric,yes
-plot.csv,decimalLatitude,"The geographic latitude (in decimal degrees, using the spatial reference system given in geodeticDatum) of the geographic center of a Location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive.",,numeric,yes
-plot.csv,geodeticDatum,"The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in decimalLatitude and decimalLongitude as based. Recommended best practice is use the EPSG code as a controlled vocabulary to provide an SRS, if known. Otherwise use a controlled vocabulary for the name or code of the geodetic datum, if known. Otherwise use a controlled vocabulary for the name or code of the ellipsoid, if known. If none of these is known, use the value ""unknown"".",,character,yes
-plot.csv,coordinateUncertaintyInMetres,"The horizontal distance (in meters) from the given decimalLatitude and decimalLongitude describing the smallest circle containing the whole of the Location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term.",,numeric,no
-plot.csv,verbatimLongitude,"The verbatim original longitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.",,numeric,no
-plot.csv,verbatimLatitude,"The verbatim original latitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.",,numeric,no
-plot.csv,verbatimCoordinateSystem,The spatial coordinate system for the verbatimLatitude and verbatimLongitude or the verbatimCoordinates of the Location. Recommended best practice is to use a controlled vocabulary.,,character,no
-plot.csv,shape,Shape of the plot area.,square; rectangle; circle; transect; releve,character,no
-plot.csv,area,Total area of the plot in square meters.,,numeric,yes
-plot.csv,length,Length of regular rectangle in metres. Must be null if plot geometry not rectangular.,,numeric,no
-plot.csv,width,Width of regular rectangle in metres. Must be null if plot geometry not rectangular,,numeric,no
-plot.csv,radius,Radius in metres if plot is a regular circle. Must be null if lot geometry not circle,,numeric,no
-plot.csv,slopeAspect,"Representative azimuth of slope gradient (0-360 degrees) or as a cardinal direction (e.g. N, S, NE)",,numeric,no
-plot.csv,slopeGradient,Representative inclination of slope in degrees,,numeric,no
-plot.csv,landform,Description of the recognizable physical feature on the surface of the earth on which the plot is located.,,character,no
-plotObservation.csv,plotID,A unique identifier for a surveyed plot (i.e. a location that has been surveyed). Typically constructed as projectID_plotName. (from plot.csv),,character,no
-plotObservation.csv,projectID,A unique identifier for a specific project. Typically taken as the project name used in the source data. (from project.csv),,character,no
-plotObservation.csv,plotObservationID,"A reference to a specific plotObservation, being the place and time that data was collected. Typically constructed as plotID_obsStartDate.",,character,yes
-plotObservation.csv,obsStartDate,The start date of this specific observation of the plot. Recorded in ISO 8601 date format: yyyy-mm-dd,,date,yes
-plotObservation.csv,obsEndDate,The end date of this specific observation of the plot. Recorded in ISO 8601 date format: yyyy-mm-dd,,date,no
-plotObservation.csv,taxonomicScope,"The taxonomic scope of the plot observation, being the type of species/organisms that were surveyed.",vascular plants; trees; herbaceous; targetted species; perennials; dominant species; woody species; trees >=10 cm dbh,character,no
-plotObservation.csv,management,Any details provided on current or past management activities.,,character,no
-plotObservation.csv,soilType,A description of the specific soil type in the plot at the time of observation. Recommended that this is from a closed list of soil types.,,character,no
-aggregateOrganismObservation.csv,plotObservationID,"A reference to a specific plotObservation, being the place and time that data was collected. Typically constructed as plotID_obsStartDate. (from plotObservation.csv)",,character,no
-aggregateOrganismObservation.csv,scientificName,"The acccepted scientific name of the species, in binomial nomenclature. Where identification is coarser than species level, the finest identification is given, followed by 'sp.' (e.g. Eucalyptus sp.). Where the finest level of identification is family, the family name is preceeded by 'Fam.' (e.g. 'Fam. Myrtaceae sp.'). This is the species name after alignment with the Australian Plant Census. (from speciesAttributes.csv)",,character,yes
-aggregateOrganismObservation.csv,verbatimScientificName,The species name provided.,,character,no
-aggregateOrganismObservation.csv,abundanceValue,The abundance of the species in the plot (or presence = 1),,character,yes
-aggregateOrganismObservation.csv,abundanceUnits,"The units used when measuring species-level abundance at the plot. Aligned to common terminology where possible, otherwise uses verbatim terms of the source data",individuals; presence; percent cover (Braun-Blanquet); individuals (Braun-Blanquet); percent frequency; percent cover; percent cover (cover class); stems per hectare; frequency (out of 5); percent; basal area    ,character,yes
-aggregateSoilObservation.csv,plotObservationID,"A reference to a specific plotObservation, being the place and time that data was collected. Typically constructed as plotID_obsStartDate. (from plotObservation.csv)",,character,no
-aggregateSoilObservation.csv,measurementType,The name of the soil attribute measured,,character,no
-aggregateSoilObservation.csv,measurementValue,The value of the soil measurement,,numeric,no
-aggregateSoilObservation.csv,measurementUnit,The units in which the soil attribute has been measured,,character,no
-aggregateSoilObservation.csv,measurementMethod,The method used to measure the soil attribute,,character,no
-speciesAttributes.csv,scientificName,"The acccepted scientific name of the species, in binomial nomenclature. Where identification is coarser than species level, the finest identification is given, followed by 'sp.' (e.g. Eucalyptus sp.). Where the finest level of identification is family, the family name is preceeded by 'Fam.' (e.g. 'Fam. Myrtaceae sp.'). This is the species name after alignment with the Australian Plant Census. ",,character,no
-speciesAttributes.csv,AusNativeStatus,Whether the species is native to Australia or not,native; non-native,character,yes
-speciesAttributes.csv,family,The taxonomic family for the species - alignment with the Australian Plant Census.,,character,yes
-speciesAttributes.csv,genus,The taxonomic genus for the species - alignment with the Australian Plant Census.,,character,yes
-speciesAttributes.csv,taxonRank,The taxonomic rank of the most specific name in the scientificName.,species; genus; family,character,yes
+File,Field,included,Description,Values,dataType
+project.csv,projectID,yes,A unique identifier for a specific project. Typically taken as the project name used in the source data.,,character
+project.csv,title,no,"A descriptive title for the research project. Typically the title used by the source data, and subsequently used as the projectID",,character
+project.csv,organizationName,yes,The full name of the organization that is associated with the collection of the data,,character
+project.csv,individualName,yes,"Where relevant, the full name of the person that is associated with the data. Can be the data manager of the organization from which the data were sourced, or the primary researcher who has collected the data.",,character
+project.csv,abstract,no,Descriptive abstract that summarizes information about the research project.,,character
+project.csv,studyAreaDescription,no,Description of the physical area associated with the research project.,,character
+project.csv,designDescription,no,Breif description of the design of the research project.,,character
+project.csv,literatureCitation,no,Citation for one or more publications describing the research project.,,character
+project.csv,projectStartDate,yes,The start date for a project. Starting period for all observation events that occur within the scope of the project. Recorded in ISO 8601 date format: yyyy-mm-dd.,,date
+project.csv,projectStopDate,no,The stop date for a project. Ending period for all observation events that occur within the scope of the project. Recorded in ISO 8601 date format: yyyy-mm-dd.,,date
+project.csv,abundanceMethod,yes,The method used to collect data on the abundance of a species in a plot,,character
+project.csv,HAVPlotDataSource,yes,"Name of organization, or person, who provided the data.",,character
+project.csv,sourceDataLicense,yes,The data license under which the source data were obtained,,character
+plot.csv,plotID,yes,A unique identifier for a surveyed plot (i.e. a location that has been surveyed). Typically constructed as projectID_plotName.,,character
+plot.csv,plotName,no,"Name or label for a plot, typically as specified by the source data. ",,character
+plot.csv,projectID,no,A unique identifier for a specific project. Typically taken as the project name used in the source data. (from project.csv),,character
+plot.csv,decimalLongitude,yes,"The geographic longitude (in decimal degrees, using the spatial reference system given in geodeticDatum) of the geographic center of a Location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive.",,numeric
+plot.csv,decimalLatitude,yes,"The geographic latitude (in decimal degrees, using the spatial reference system given in geodeticDatum) of the geographic center of a Location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive.",,numeric
+plot.csv,geodeticDatum,yes,"The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in decimalLatitude and decimalLongitude as based. Recommended best practice is use the EPSG code as a controlled vocabulary to provide an SRS, if known. Otherwise use a controlled vocabulary for the name or code of the geodetic datum, if known. Otherwise use a controlled vocabulary for the name or code of the ellipsoid, if known. If none of these is known, use the value ""unknown"".",,character
+plot.csv,coordinateUncertaintyInMetres,no,"The horizontal distance (in meters) from the given decimalLatitude and decimalLongitude describing the smallest circle containing the whole of the Location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term.",,numeric
+plot.csv,verbatimLongitude,no,"The verbatim original longitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.",,numeric
+plot.csv,verbatimLatitude,no,"The verbatim original latitude of the Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in verbatimSRS and the coordinate system should be stored in verbatimCoordinateSystem.",,numeric
+plot.csv,verbatimCoordinateSystem,no,The spatial coordinate system for the verbatimLatitude and verbatimLongitude or the verbatimCoordinates of the Location. Recommended best practice is to use a controlled vocabulary.,,character
+plot.csv,shape,no,Shape of the plot area.,square; rectangle; circle; transect; releve,character
+plot.csv,area,yes,Total area of the plot in square meters.,,numeric
+plot.csv,length,no,Length of regular rectangle in metres. Must be null if plot geometry not rectangular.,,numeric
+plot.csv,width,no,Width of regular rectangle in metres. Must be null if plot geometry not rectangular,,numeric
+plot.csv,radius,no,Radius in metres if plot is a regular circle. Must be null if lot geometry not circle,,numeric
+plot.csv,slopeAspect,no,"Representative azimuth of slope gradient (0-360 degrees) or as a cardinal direction (e.g. N, S, NE)",,numeric
+plot.csv,slopeGradient,no,Representative inclination of slope in degrees,,numeric
+plot.csv,landform,no,Description of the recognizable physical feature on the surface of the earth on which the plot is located.,,character
+plotObservation.csv,plotID,no,A unique identifier for a surveyed plot (i.e. a location that has been surveyed). Typically constructed as projectID_plotName. (from plot.csv),,character
+plotObservation.csv,projectID,no,A unique identifier for a specific project. Typically taken as the project name used in the source data. (from project.csv),,character
+plotObservation.csv,plotObservationID,yes,"A reference to a specific plotObservation, being the place and time that data was collected. Typically constructed as plotID_obsStartDate.",,character
+plotObservation.csv,obsStartDate,yes,The start date of this specific observation of the plot. Recorded in ISO 8601 date format: yyyy-mm-dd,,date
+plotObservation.csv,obsEndDate,no,The end date of this specific observation of the plot. Recorded in ISO 8601 date format: yyyy-mm-dd,,date
+plotObservation.csv,taxonomicScope,no,"The taxonomic scope of the plot observation, being the type of species/organisms that were surveyed.",vascular plants; trees; herbaceous; targetted species; perennials; dominant species; woody species; trees >=10 cm dbh,character
+plotObservation.csv,management,no,Any details provided on current or past management activities.,,character
+plotObservation.csv,soilType,no,A description of the specific soil type in the plot at the time of observation. Recommended that this is from a closed list of soil types.,,character
+aggregateOrganismObservation.csv,plotObservationID,no,"A reference to a specific plotObservation, being the place and time that data was collected. Typically constructed as plotID_obsStartDate. (from plotObservation.csv)",,character
+aggregateOrganismObservation.csv,scientificName,yes,"The acccepted scientific name of the species, in binomial nomenclature. Where identification is coarser than species level, the finest identification is given, followed by 'sp.' (e.g. Eucalyptus sp.). Where the finest level of identification is family, the family name is preceeded by 'Fam.' (e.g. 'Fam. Myrtaceae sp.'). This is the species name after alignment with the Australian Plant Census. (from speciesAttributes.csv)",,character
+aggregateOrganismObservation.csv,verbatimScientificName,no,The species name provided.,,character
+aggregateOrganismObservation.csv,abundanceValue,yes,The abundance of the species in the plot (or presence = 1),,character
+aggregateOrganismObservation.csv,abundanceUnits,yes,"The units used when measuring species-level abundance at the plot. Aligned to common terminology where possible, otherwise uses verbatim terms of the source data",individuals; presence; percent cover (Braun-Blanquet); individuals (Braun-Blanquet); percent frequency; percent cover; percent cover (cover class); stems per hectare; frequency (out of 5); percent; basal area    ,character
+aggregateSoilObservation.csv,plotObservationID,no,"A reference to a specific plotObservation, being the place and time that data was collected. Typically constructed as plotID_obsStartDate. (from plotObservation.csv)",,character
+aggregateSoilObservation.csv,measurementType,no,The name of the soil attribute measured,,character
+aggregateSoilObservation.csv,measurementValue,no,The value of the soil measurement,,numeric
+aggregateSoilObservation.csv,measurementUnit,no,The units in which the soil attribute has been measured,,character
+aggregateSoilObservation.csv,measurementMethod,no,The method used to measure the soil attribute,,character
+speciesAttributes.csv,scientificName,no,"The acccepted scientific name of the species, in binomial nomenclature. Where identification is coarser than species level, the finest identification is given, followed by 'sp.' (e.g. Eucalyptus sp.). Where the finest level of identification is family, the family name is preceeded by 'Fam.' (e.g. 'Fam. Myrtaceae sp.'). This is the species name after alignment with the Australian Plant Census. ",,character
+speciesAttributes.csv,AusNativeStatus,yes,Whether the species is native to Australia or not,native; non-native,character
+speciesAttributes.csv,family,yes,The taxonomic family for the species - alignment with the Australian Plant Census.,,character
+speciesAttributes.csv,genus,yes,The taxonomic genus for the species - alignment with the Australian Plant Census.,,character
+speciesAttributes.csv,taxonRank,yes,The taxonomic rank of the most specific name in the scientificName.,species; genus; family,character
