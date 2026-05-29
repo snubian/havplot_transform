@@ -21,3 +21,5 @@ Further information including details of HAVPlot data structure is [here](https:
 The output is a `data.frame` which compiles selected columns from the raw HAVPlot tables.
 
 Refer to `docs/HAVPlot_Data_Format.csv` - have added column `included` to indicate which fields from the original HAVPlot tables are present in the compiled output.
+
+Modify the `select()` statements within `compile_havplot.R` to include/exclude HAVPlot fields.
